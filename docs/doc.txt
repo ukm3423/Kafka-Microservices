@@ -1,0 +1,128 @@
+Kafka Cluster
+├── Broker 1
+│   ├── OrdersTopic
+│   │   ├── Partition 0
+│   │   │   ├── Leader: Broker 1
+│   │   │   │   ├── Message 1: Order 123 (User A)
+│   │   │   │   ├── Message 2: Order 124 (User B)
+│   │   │   │   └── ...
+│   │   │   ├── Replicas:
+│   │   │   │   ├── Broker 2
+│   │   │   │   │   └── (Message 1, Message 2, ...)
+│   │   │   │   └── Broker 3
+│   │   │   │       └── (Message 1, Message 2, ...)
+│   │   │   └── ...
+│   │   └── ...
+├── Broker 2
+│   ├── OrdersTopic
+│   │   ├── Partition 1
+│   │   │   ├── Leader: Broker 2
+│   │   │   │   ├── Message 3: Order 125 (User C)
+│   │   │   │   ├── Message 4: Order 126 (User D)
+│   │   │   │   └── ...
+│   │   │   ├── Replicas:
+│   │   │   │   ├── Broker 1
+│   │   │   │   │   └── (Message 3, Message 4, ...)
+│   │   │   │   └── Broker 3
+│   │   │   │       └── (Message 3, Message 4, ...)
+│   │   │   └── ...
+│   │   └── ...
+└── Broker 3
+    ├── OrdersTopic
+    │   ├── Partition 2
+    │   │   ├── Leader: Broker 3
+    │   │   │   ├── Message 5: Order 127 (User E)
+    │   │   │   ├── Message 6: Order 128 (User F)
+    │   │   │   └── ...
+    │   │   ├── Replicas:
+    │   │   │   ├── Broker 1
+    │   │   │   │   └── (Message 5, Message 6, ...)
+    │   │   │   └── Broker 2
+    │   │   │       └── (Message 5, Message 6, ...)
+    │   │   └── ...
+    │   └── ...
+    └── ...
+
+
+======================================================================================================================
+
+Kafka Cluster
+├── Broker 1
+│   ├── OrdersTopic (Partition 0)
+│   ├── OrdersTopic (Partition 3)
+│   ├── PaymentsTopic (Partition 0)
+│   └── PaymentsTopic (Partition 3)
+├── Broker 2
+│   ├── OrdersTopic (Partition 1)
+│   ├── OrdersTopic (Partition 4)
+│   ├── PaymentsTopic (Partition 1)
+│   └── PaymentsTopic (Partition 4)
+└── Broker 3
+    ├── OrdersTopic (Partition 2)
+    ├── OrdersTopic (Partition 5)
+    ├── PaymentsTopic (Partition 2)
+    └── PaymentsTopic (Partition 5)
+
+
+===========================================================================================================
+
+
+Kafka Cluster
+├── Broker 1
+│   ├── OrdersTopic
+│   │   ├── Partition 0
+│   │   │   ├── Message 1: Order 123 (User A)
+│   │   │   ├── Message 2: Order 124 (User B)
+│   │   │   └── ...
+│   │   ├── Partition 1
+│   │   │   ├── Message 3: Order 125 (User C)
+│   │   │   ├── Message 4: Order 126 (User D)
+│   │   │   └── ...
+│   │   └── ...
+│   ├── PaymentsTopic
+│   │   ├── Partition 0
+│   │   │   ├── Message 1: Payment 987 (User A)
+│   │   │   ├── Message 2: Payment 988 (User B)
+│   │   │   └── ...
+│   │   ├── Partition 1
+│   │   │   ├── Message 3: Payment 989 (User C)
+│   │   │   ├── Message 4: Payment 990 (User D)
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+├── Broker 2
+│   ├── OrdersTopic
+│   │   ├── Partition 2
+│   │   │   ├── Message 5: Order 127 (User E)
+│   │   │   ├── Message 6: Order 128 (User F)
+│   │   │   └── ...
+│   │   ├── Partition 3
+│   │   │   ├── Message 7: Order 129 (User G)
+│   │   │   ├── Message 8: Order 130 (User H)
+│   │   │   └── ...
+│   │   └── ...
+│   ├── PaymentsTopic
+│   │   ├── Partition 2
+│   │   │   ├── Message 5: Payment 991 (User E)
+│   │   │   ├── Message 6: Payment 992 (User F)
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+└── Broker 3
+    ├── OrdersTopic
+    │   ├── Partition 4
+    │   │   ├── Message 9: Order 131 (User I)
+    │   │   ├── Message 10: Order 132 (User J)
+    │   │   └── ...
+    │   ├── Partition 5
+    │   │   ├── Message 11: Order 133 (User K)
+    │   │   ├── Message 12: Order 134 (User L)
+    │   │   └── ...
+    │   └── ...
+    ├── PaymentsTopic
+    │   ├── Partition 3
+    │   │   ├── Message 7: Payment 993 (User G)
+    │   │   ├── Message 8: Payment 994 (User H)
+    │   │   └── ...
+    │   └── ...
+    └── ...

@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Order {
-    private Long orderId; 
+    
+    private String orderId; 
     private String name; 
     private Integer quantity; 
     private Double price;
