@@ -2,15 +2,17 @@ package com.stockservice.kafka;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-import com.basedomain.dto.Order;
 import com.basedomain.dto.OrderEvent;
 
 @Service
 public class OrderConsumer {
     
+    @Autowired
+    private OrderResponseProducer orderResponseProducer;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderConsumer.class);
 
@@ -20,22 +22,16 @@ public class OrderConsumer {
 
 
         // save data to the database
-
         System.out.println("\n\n"+event+"\n\n");
 
-        // Order order = new Order(); 
-        // order.setName(event.getOrder().getName());
-        // order.setOrderId(event.getOrder().getOrderId());
-        // order.setPrice(event.getOrder().getPrice());
-        // order.setQuantity(event.getOrder().getQuantity());
+        event.setStatus("PROCESSED");
+        event.setMessage("Order has been processed in stock service");
+        // Send response to order-service
+        orderResponseProducer.sendResponse(event);
 
-        // OrderEvent orderEventEntity = new OrderEvent();
         
-        // orderEventEntity.setOrder(order);
-        // orderEventEntity.setStatus(event.getStatus());
-        // orderEventEntity.setMessage(event.getMessage());
 
-        // System.out.println(orderEventEntity);
+
 
     }
 

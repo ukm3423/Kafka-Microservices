@@ -38,4 +38,11 @@ public class OrderController {
         return event;
     }
 
+    // @PostMapping
+    // public String createOrder(@RequestBody Order order) {
+    //     // Save order to database (omitted for simplicity)
+    //     kafkaTemplate.send("order-topic", order);
+    //     return "Order created!";
+    // }
+
 }
